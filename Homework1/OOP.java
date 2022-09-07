@@ -62,11 +62,7 @@ public class OOP {
         static double accountBalance;
         cardType card_type = cardType.CREDIT_CARD;
 
-        public CreditCard(String holderName, int cardNumber, double accountBalance, cardType card_type) {
-            this.holderName = holderName;
-            this.cardNumber = cardNumber;
-            this.card_type = card_type;
-        };
+        public CreditCard() {};
 
         abstract boolean isCardAccepted(cardType card_type);
 
@@ -89,7 +85,11 @@ public class OOP {
 
     public class VisaCard extends CreditCard {
         public VisaCard(String holderName, int cardNumber, double accountBalance) {
-            super(holderName, cardNumber, accountBalance, cardType.VISA);
+            super();
+            super.holderName = holderName;
+            super.cardNumber = cardNumber;
+            super.card_type = cardType.VISA;
+            // super.accountBalance = accountBalance;
         }
         // dynamic polymorphism
         @Override
@@ -97,15 +97,19 @@ public class OOP {
             return card_type.equals(cardType.VISA);
         }
 
-        public static void main(String[] args) {
-            CreditCard cheese = new VisaCard("1", 001, 200.00, cardType.VISA);
-            cheese.payBill(100.00);
-        }
+        // public static void main(String[] args) {
+        //     CreditCard cheese = new VisaCard("1", 001, 200.00);
+        //     cheese.payBill(100.00);
+        // }
     }
 
     public class MasterCard extends CreditCard {
         public MasterCard(String holderName, int cardNumber, double accountBalance, cardType card_type) {
-            super(holderName, cardNumber, accountBalance, card_type);
+            super();
+            super.holderName = holderName;
+            super.cardNumber = cardNumber;
+            super.card_type = cardType.MASTER;
+            // super.accountBalance = accountBalance;
         }
 
         @Override
@@ -113,9 +117,9 @@ public class OOP {
             return card_type.equals(cardType.MASTER);
         }
 
-        public static void main(String[] args) {
-            CreditCard master = new MasterCard("2", 002, 500.00, cardType.MASTER);
-            master.isCardAccepted(cardType.MASTER);
-        }
+        // public static void main(String[] args) {
+        //     CreditCard master = new MasterCard("2", 002, 500.00);
+        //     master.isCardAccepted(cardType.MASTER);
+        // }
     }
 }
